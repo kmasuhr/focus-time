@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port=$PORT --host=0.0.0.0 --disable-host-check",
+    "start": "npm run build:prod && http-server dist/focus-dashboard --port=$PORT",
+    "start:dev": "ng serve --port=$PORT --host=0.0.0.0 --disable-host-check",
     "build": "ng build",
+    "build:prod": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,6 +26,7 @@
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
     "core-js": "^2.5.4",
+    "http-server": "^0.11.1",
     "moment": "^2.23.0",
     "ngx-moment": "^3.3.0",
     "rxjs": "^6.3.3",
