@@ -10,7 +10,7 @@ export class TimeService {
   private readonly clock: Observable<any>;
 
   constructor() {
-    this.clock = interval(400).pipe(map(() => {
+    this.clock = interval(100).pipe(map(() => {
       return moment(new Date());
     }));
   }
