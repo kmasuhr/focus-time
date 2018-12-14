@@ -6,9 +6,27 @@ import * as moment from "moment";
 })
 export class ConfigService {
   TIME_FORMAT = 'HH:mm';
-  focusTime = [
-    {start: moment('10:00', this.TIME_FORMAT), end: moment('12:00', this.TIME_FORMAT)},
-    // {start: moment('20:00', this.TIME_FORMAT), end: moment('22:00', this.TIME_FORMAT)},
+  eventList = [
+    {
+      start: moment('10:00', this.TIME_FORMAT),
+      end: moment('10:30', this.TIME_FORMAT),
+      message: 'Retro',
+      color: '#7b1fa2',
+    },
+
+    {
+      start: moment('07:00', this.TIME_FORMAT),
+      end: moment('09:00', this.TIME_FORMAT),
+      message: 'Focus time!',
+      color: '#F44336',
+    },
+
+    {
+      start: moment('12:00', this.TIME_FORMAT),
+      end: moment('15:00', this.TIME_FORMAT),
+      message: 'Focus time!',
+      color: '#F44336',
+    },
   ];
 
   constructor() {

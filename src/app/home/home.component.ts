@@ -8,8 +8,14 @@ import {ConfigService} from "../common/config.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  DEFAULT = {
+    message: 'Fun time!',
+    backgroundColor: '#8BC34A',
+  };
   currentTime = null;
-  focusTime = false;
+
+  message = '';
+  backgroundColor = '';
 
   constructor(private _timeService: TimeService,
               private _configService: ConfigService) {
@@ -26,16 +32,17 @@ export class HomeComponent implements OnInit {
   };
 
   updateFocusStatus() {
-    const focusTimes = this._configService.focusTime;
+    const events = this._configService.eventList;
 
-    let focusTime = false;
-    for (const time of focusTimes) {
-      if (this.currentTime.isBetween(time.start, time.end)) {
-        focusTime = true;
-        break;
+    for (const event of events) {
+      if (this.currentTime.isBetween(event.start, event.end)) {
+        this.message = event.message;
+        this.backgroundColor = event.color;
+        return
       }
     }
 
-    this.focusTime = focusTime;
+    this.message = this.DEFAULT.message;
+    this.backgroundColor = this.DEFAULT.backgroundColor;
   }
 }

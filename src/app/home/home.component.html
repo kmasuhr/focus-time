@@ -1,20 +1,11 @@
-<div [className]="focusTime ? 'focus-time' : 'fun-time'" style="color: white; padding-top: 30px"
+<div [style.backgroundColor]="backgroundColor" style="color: white; padding-top: 30px"
      fxLayout="column" fxFlexFill fxLayoutAlign="center center">
-
-  <!--<div fxFlex="100%">-->
-    <!--<span class="mat-display-3">DevOps Focus Dashboard</span>-->
-  <!--</div>-->
 
   <div fxFlex="100%">
     <span class="mat-display-4">{{currentTime | date:'HH:mm:ss'}}</span>
   </div>
 
-  <div fxFlex="100%" *ngIf="focusTime">
-    <span class="mat-display-4">Focus time!</span>
+  <div fxFlex="100%">
+    <span class="message">{{message}}</span>
   </div>
-
-  <div fxFlex="100%" *ngIf="!focusTime">
-    <span class="mat-display-4">Nerf time!</span>
-  </div>
-
 </div>
