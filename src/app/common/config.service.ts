@@ -10,7 +10,7 @@ export class ConfigService {
     {
       start: moment('10:00', this.TIME_FORMAT),
       end: moment('10:30', this.TIME_FORMAT),
-      message: 'Retro',
+      message: 'Standup!',
       color: '#7b1fa2',
     },
     {
