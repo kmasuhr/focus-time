@@ -9,7 +9,7 @@ import {ConfigService} from "../common/config.service";
 })
 export class HomeComponent implements OnInit {
   DEFAULT = {
-    message: "Conversations are not prohibited. Enjoy.",
+    message: "Shittalks are not prohibited. Enjoy.",
     backgroundColor: "#8BC34A"
   };
   currentTime = null;
