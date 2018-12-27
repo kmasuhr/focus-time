@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
       this.secretCode += event.key;
     }
 
-    if (this.secretCode.toLowerCase().includes('nerf')) {
+    if (this.secretCode.toLowerCase().includes('nerf') && !this.nerfTime) {
       this.nerfTime = true;
       this.startDisco()
     }
@@ -91,7 +91,6 @@ export class HomeComponent implements OnInit {
     this.$nerfDisco = interval(150).pipe(
       map(x => x + 1),
       map((x) => {
-        console.log(x % this.NERF_TIME_CONFIG.colors.length)
         this.backgroundColor = this.NERF_TIME_CONFIG.colors[x % this.NERF_TIME_CONFIG.colors.length];
       })).subscribe()
   }
