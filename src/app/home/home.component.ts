@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   backgroundColor = "";
   secretCode = "";
   nerfTime = false;
+  $nerfDisco;
 
   constructor(
     private _timeService: TimeService,
@@ -70,7 +71,15 @@ export class HomeComponent implements OnInit {
 
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
-    this.secretCode += event.key;
+    if (event.key == 'Escape') {
+      this.secretCode = '';
+      this.nerfTime = false;
+      if (this.$nerfDisco) {
+        this.$nerfDisco.unsubscribe();
+      }
+    } else {
+      this.secretCode += event.key;
+    }
 
     if (this.secretCode.toLowerCase().includes('nerf')) {
       this.nerfTime = true;
@@ -79,11 +88,11 @@ export class HomeComponent implements OnInit {
   }
 
   private startDisco() {
-    interval(150).pipe(
+    this.$nerfDisco = interval(150).pipe(
       map(x => x + 1),
       map((x) => {
         console.log(x % this.NERF_TIME_CONFIG.colors.length)
         this.backgroundColor = this.NERF_TIME_CONFIG.colors[x % this.NERF_TIME_CONFIG.colors.length];
-      })).toPromise()
+      })).subscribe()
   }
 }
