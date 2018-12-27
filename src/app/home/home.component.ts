@@ -51,22 +51,31 @@ export class HomeComponent implements OnInit {
   };
 
   updateFocusStatus() {
-    const events = this._configService.eventList;
-
-    for (const event of events) {
-      if (this.currentTime.isBetween(event.start, event.end)) {
-        this.message = event.message;
-        this.backgroundColor = event.color;
-        return;
-      }
-    }
+    const config = this.getCurrentConfig();
 
     if (this.nerfTime) {
       this.message = this.NERF_TIME_CONFIG.message;
     } else {
-      this.message = this.DEFAULT.message;
-      this.backgroundColor = this.DEFAULT.backgroundColor;
+      this.message = config.message;
+      this.backgroundColor = config.backgroundColor;
     }
+  }
+
+  getCurrentConfig() {
+    const events = this._configService.eventList;
+    let config = {
+      message: this.DEFAULT.message,
+      backgroundColor: this.DEFAULT.backgroundColor,
+    };
+
+    for (const event of events) {
+      if (this.currentTime.isBetween(event.start, event.end)) {
+        config.message = event.message;
+        config.backgroundColor = event.color;
+      }
+    }
+
+    return config;
   }
 
   @HostListener('document:keydown', ['$event'])
