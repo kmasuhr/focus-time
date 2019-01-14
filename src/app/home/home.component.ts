@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCurrentConfig() {
-    const events = this._configService.eventList;
+    const events = this._configService.getEventList();
     let config = {
       message: this.DEFAULT.message,
       backgroundColor: this.DEFAULT.backgroundColor,
