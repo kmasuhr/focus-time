@@ -12,7 +12,7 @@ import {map} from "rxjs/operators";
 export class HomeComponent implements OnInit {
   DEFAULT = {
     message: "Shittalks are not prohibited. Enjoy.",
-    backgroundColor: "#8BC34A"
+    backgroundColor: "#E0E0E0"
   };
   NERF_TIME_CONFIG = {
     message: "Nerf time!",
@@ -32,6 +32,8 @@ export class HomeComponent implements OnInit {
 
   message = "";
   backgroundColor = "";
+  cssClass = "";
+
   secretCode = "";
   nerfTime = false;
   $nerfDisco;
@@ -58,6 +60,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.message = config.message;
       this.backgroundColor = config.backgroundColor;
+      this.cssClass = config.cssClass;
     }
   }
 
@@ -66,12 +69,14 @@ export class HomeComponent implements OnInit {
     let config = {
       message: this.DEFAULT.message,
       backgroundColor: this.DEFAULT.backgroundColor,
+      cssClass: 'home-default',
     };
 
     for (const event of events) {
       if (this.currentTime.isBetween(event.start, event.end)) {
         config.message = event.message;
         config.backgroundColor = event.color;
+        config.cssClass = '';
       }
     }
 

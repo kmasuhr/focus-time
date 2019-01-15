@@ -17,7 +17,7 @@ export class ConfigService {
   eventList: EventList[] = [
     {
       start: '10:00',
-      end: '10:30',
+      end: '10:15',
       message: 'Standup!',
       color: '#7b1fa2',
     },
