@@ -6,7 +6,7 @@ export interface EventList {
   start: Moment | string
   end: Moment | string
   message: string
-  color: string
+  cssClass: string
 }
 
 @Injectable({
@@ -19,31 +19,31 @@ export class ConfigService {
       start: '10:00',
       end: '10:15',
       message: 'Standup!',
-      color: '#7b1fa2',
+      cssClass: 'home-standup',
     },
     {
       start: '07:00',
       end: '09:00',
       message: 'Focus time!',
-      color: '#F44336',
+      cssClass: 'home-focus',
     },
     {
       start: '12:00',
       end: '15:00',
       message: 'Focus time!',
-      color: '#F44336',
+      cssClass: 'home-focus',
     },
     {
       start: '22:00',
       end: '24:00',
       message: 'Bed time!',
-      color: '#283593',
+      cssClass: 'home-bed',
     },
     {
       start: '00:00',
       end: '06:00',
       message: 'Bed time!',
-      color: '#283593',
+      cssClass: 'home-bed',
     },
   ];
 

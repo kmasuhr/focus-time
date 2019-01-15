@@ -59,7 +59,6 @@ export class HomeComponent implements OnInit {
       this.message = this.NERF_TIME_CONFIG.message;
     } else {
       this.message = config.message;
-      this.backgroundColor = config.backgroundColor;
       this.cssClass = config.cssClass;
     }
   }
@@ -68,15 +67,18 @@ export class HomeComponent implements OnInit {
     const events = this._configService.getEventList();
     let config = {
       message: this.DEFAULT.message,
-      backgroundColor: this.DEFAULT.backgroundColor,
       cssClass: 'home-default',
     };
 
     for (const event of events) {
       if (this.currentTime.isBetween(event.start, event.end)) {
         config.message = event.message;
-        config.backgroundColor = event.color;
-        config.cssClass = '';
+
+        if (event.cssClass) {
+          config.cssClass = event.cssClass;
+        } else {
+          config.cssClass = '';
+        }
       }
     }
 
@@ -87,10 +89,14 @@ export class HomeComponent implements OnInit {
   onKeydownHandler(event: KeyboardEvent) {
     if (event.key == 'Escape') {
       this.secretCode = '';
+      this.backgroundColor = '';
+      this.cssClass = '';
       this.nerfTime = false;
       if (this.$nerfDisco) {
         this.$nerfDisco.unsubscribe();
       }
+
+      this.updateFocusStatus();
     } else {
       this.secretCode += event.key;
     }
@@ -102,6 +108,7 @@ export class HomeComponent implements OnInit {
   }
 
   private startDisco() {
+    this.cssClass = 'home-nerf';
     this.$nerfDisco = interval(150).pipe(
       map(x => x + 1),
       map((x) => {
