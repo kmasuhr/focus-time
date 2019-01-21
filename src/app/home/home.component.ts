@@ -11,7 +11,7 @@ import {map} from "rxjs/operators";
 })
 export class HomeComponent implements OnInit {
   DEFAULT = {
-    message: "Open space talks are not prohibited. Enjoy.",
+    message: "Shittalks are not prohibited. Enjoy.",
     backgroundColor: "#E0E0E0"
   };
   NERF_TIME_CONFIG = {
