@@ -16,8 +16,8 @@ export class ConfigService {
   TIME_FORMAT = 'HH:mm';
   eventList: EventList[] = [
     {
-      start: '10:00',
-      end: '10:15',
+      start: '10:30',
+      end: '10:45',
       message: 'Standup!',
       cssClass: 'home-standup',
     },
